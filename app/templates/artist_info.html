@@ -22,29 +22,33 @@
   </head>
   <body>
     <div>
-      <h1>Artists in Database</h1>
+      <h1>Artists Report</h1>
 
       {% if artists %}
       <table>
         <thead>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Street</th>
-            <th>Zip</th>
-            <th>Area Code</th>
+            <th>Artist Name</th>
+            <th>Address</th>
             <th>Phone</th>
+            <th>Type</th>
+            <th>Medium</th>
+            <th>Style</th>
+            <th>Sales Last Year</th>
+            <th>Sales YTD</th>
           </tr>
         </thead>
         <tbody>
           {% for artist in artists %}
           <tr>
-            <td>{{ artist['FIRSTNAME'] }}</td>
-            <td>{{ artist['LASTNAME'] }}</td>
-            <td>{{ artist['STREET'] }}</td>
-            <td>{{ artist['ZIP'] }}</td>
-            <td>{{ artist['AREACODE'] }}</td>
-            <td>{{ artist['TELEPHONENUMBER'] }}</td>
+            <td>{{ artist['ARTIST_NAME'] }}</td>
+            <td>{{ artist['ADDRESS'] }}</td>
+            <td>{{ artist['PHONE'] }}</td>
+            <td>{{ artist['TYPE'] }}</td>
+            <td>{{ artist['MEDIUM'] }}</td>
+            <td>{{ artist['STYLE'] }}</td>
+            <td>{{ artist['SALES_LAST_YEAR'] }}</td>
+            <td>{{ artist['SALES_YTD'] }}</td>
           </tr>
           {% endfor %}
         </tbody>
