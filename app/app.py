@@ -13,7 +13,32 @@ def landing_page():
 
 @app.route('/artist_info')
 def artist_info():
-    return render_template('artist_info.html')
+    try:
+        dsn = oracledb.makedsn('csdb.fu.campus', 1521, sid='cs40')
+        connection = oracledb.connect(user='agardner', password='Agar1324', dsn=dsn)
+
+        cursor = connection.cursor()
+        cursor.execute("""
+        SELECT FIRSTNAME, LASTNAME, STREET, ZIP, AREACODE, TELEPHONENUMBER
+        FROM ARTIST
+        """)
+
+        rows = cursor.fetchall()
+
+        columns = [col[0] for col in cursor.description]
+        artists = [dict(zip(columns, row)) for row in rows]
+
+        cursor.close()
+        connection.close()
+
+        print(artists)  # Print artists to terminal for debugging
+
+        return render_template('artist_info.html', artists=artists)
+
+    except Exception as e:
+        print("Error loading artist info:", e)
+        return "Internal server error: " + str(e), 500
+
 
 # Route for Artist Form Page
 @app.route('/artist')

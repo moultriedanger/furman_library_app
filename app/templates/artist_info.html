@@ -7,14 +7,57 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
     />
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
   </head>
   <body>
-    <h1>Artist Info!!!!</h1>
+    <div>
+      <h1>Artists in Database</h1>
 
-    <div style="margin-top: 20px">
-      <a href="{{ url_for('artist_form') }}">
-        <button>Add Artist</button>
-      </a>
+      {% if artists %}
+      <table>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Street</th>
+            <th>Zip</th>
+            <th>Area Code</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for artist in artists %}
+          <tr>
+            <td>{{ artist['FIRSTNAME'] }}</td>
+            <td>{{ artist['LASTNAME'] }}</td>
+            <td>{{ artist['STREET'] }}</td>
+            <td>{{ artist['ZIP'] }}</td>
+            <td>{{ artist['AREACODE'] }}</td>
+            <td>{{ artist['TELEPHONENUMBER'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No artists found.</p>
+      {% endif %}
+
+      <div style="margin-top: 20px">
+        <a href="{{ url_for('artist_form') }}">
+          <button>Add Artist</button>
+        </a>
+      </div>
     </div>
   </body>
 </html>
