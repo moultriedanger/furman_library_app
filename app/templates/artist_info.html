@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Artist Information</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Artist Info!!!!</h1>
+
+    <div style="margin-top: 20px">
+      <a href="{{ url_for('artist_form') }}">
+        <button>Add Artist</button>
+      </a>
+    </div>
+  </body>
+</html>

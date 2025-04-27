@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Collector Information Form</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div>
+      <h2>Collector Information Form</h2>
+
+      <form method="POST">
+        <div>
+          <label>Date of Interview</label>
+          <input type="date" name="interview_date" required />
+        </div>
+
+        <div>
+          <label>Name of Interviewer</label>
+          <input type="text" name="interviewer_name" required />
+        </div>
+
+        <div>
+          <label>Collector Last Name</label>
+          <input type="text" name="last_name" required />
+        </div>
+
+        <div>
+          <label>First Name</label>
+          <input type="text" name="first_name" required />
+        </div>
+
+        <div>
+          <label>Street</label>
+          <input type="text" name="street" required />
+        </div>
+
+        <div>
+          <label>City</label>
+          <input type="text" name="city" required />
+        </div>
+
+        <div>
+          <label>State</label>
+          <input type="text" name="state" maxlength="2" required />
+        </div>
+
+        <div>
+          <label>Zip</label>
+          <input type="text" name="zip_code" maxlength="5" required />
+        </div>
+
+        <div>
+          <label>Area Code</label>
+          <input type="text" name="area_code" maxlength="3" required />
+        </div>
+
+        <div>
+          <label>Phone Number</label>
+          <input type="text" name="phone_number" maxlength="7" required />
+        </div>
+
+        <div>
+          <label>Social Security Number</label>
+          <input type="text" name="ssn" maxlength="9" required />
+        </div>
+
+        <hr />
+
+        <h5>Collection Details (Optional)</h5>
+
+        <div>
+          <label>Collection Type</label>
+          <input type="text" name="collection_type" />
+        </div>
+
+        <div>
+          <label>Collection Medium</label>
+          <input type="text" name="collection_medium" />
+        </div>
+
+        <div>
+          <label>Collection Style</label>
+          <input type="text" name="collection_style" />
+        </div>
+
+        <div>
+          <button type="submit">Submit Collector</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
