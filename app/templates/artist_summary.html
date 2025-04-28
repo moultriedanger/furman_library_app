@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ first_name }} {{ last_name }} - Artist Summary Report</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Summary Report for {{ first_name }} {{ last_name }}</h1>
+
+      <h2>Works Sold</h2>
+
+      {% if sold_works %}
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date Listed</th>
+            <th>Type</th>
+            <th>Medium</th>
+            <th>Style</th>
+            <th>Year</th>
+            <th>Asking Price</th>
+            <th>Sell Price</th>
+            <th>Date Sold</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for work in sold_works %}
+          <tr>
+            <td>{{ work['Title'] }}</td>
+            <td>{{ work['Date Listed'] }}</td>
+            <td>{{ work['Type'] }}</td>
+            <td>{{ work['Medium'] }}</td>
+            <td>{{ work['Style'] }}</td>
+            <td>{{ work['Year'] }}</td>
+            <td>{{ work['Asking Price'] }}</td>
+            <td>{{ work['Sell Price'] }}</td>
+            <td>{{ work['Date Sold'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No works sold for this artist.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

@@ -18,11 +18,18 @@
         padding: 8px;
         text-align: left;
       }
+      a {
+        text-decoration: none;
+        color: blue;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>
     <div>
-      <h1>Artists Report</h1>
+      <h1>Artists in Database</h1>
 
       {% if artists %}
       <table>
@@ -41,7 +48,13 @@
         <tbody>
           {% for artist in artists %}
           <tr>
-            <td>{{ artist['ARTIST_NAME'] }}</td>
+            <td>
+              <a
+                href="{{ url_for('artist_summary', first_name=artist['FIRSTNAME'], last_name=artist['LASTNAME']) }}"
+              >
+                {{ artist['ARTIST_NAME'] }}
+              </a>
+            </td>
             <td>{{ artist['ADDRESS'] }}</td>
             <td>{{ artist['PHONE'] }}</td>
             <td>{{ artist['TYPE'] }}</td>
